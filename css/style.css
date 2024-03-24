@@ -1,0 +1,170 @@
+/* Step 1: Keyframes for Logo Animation: Grows from 25px to 475px, fades from 0 to 1 opacity over 5 seconds. The animation only happens when the page is loaded. */
+@keyframes logo {
+    from {
+        width: 25px;
+        opacity: 0;
+    }
+    to {
+        width: 475px;
+        opacity: 1;
+    }
+}
+
+#logo {
+    animation: logo 5s;
+}
+
+
+/* step 2: Global body styling: Implements Poppins font with serif as a backup: use the image “concrete_seamless.png” as a background-image with a backup color of #f1f1f1. */
+body {
+    font-family: 'Poppins', serif;
+    background-image: url('../images/concrete_seamless.png');
+    background-color: #f1f1f1;
+}
+
+/* Step 3: Display all headers using flexbox with a column layout and align them vertically centered */
+header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Step 4: Display nav-links class in flex with column direction.  */
+
+.nav_links {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Step 5: Set the color of visited links to the same color as their unvisited state */
+a:visited {
+    color: #0000EE;
+}
+
+/* Step 6: Style ONLY those header elements that are direct children of a card class with the following properties: 
+   - Background color: #288088
+   - Border: 2px solid border using #45ADAD
+   - Padding: 20px on the top and bottom
+   - Border radius: 50px on the top left and right corners */
+
+.card > header {
+    background: #288088;
+    border: 2px solid #45ADAD;
+    padding: 20px 0;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+/* Curve the corners of the card class as well to adjust the white div background. */
+.card{
+    border-radius: 50px 50px 0 0;
+}
+
+/* Step 7&8: Specify an initial size of 450px for each card using flex-basis property.
+
+Wrap cards under the pricing class and center them both horizontally and vertically. */
+
+.card {
+    flex-basis: 450px;
+}
+
+.pricing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Step 9: Style the images in the gallery class with the following properties:
+   - Border: 10px solid border with a color of #50C7C7
+   - Margin: 10px on all four sides
+   - Width: 300px */
+
+.gallery img {
+    border: 10px solid #50C7C7;
+    margin: 10px;
+    width: 300px;
+}
+
+/* Step 10: Wrap and center items under the gallery class using flexbox */
+.gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* The following specifications are for when the screen-size is greater than 900px */
+
+@media screen and (min-width: 900px) {
+    /* Step 11: Display the header and .nav_links using flexbox with a row layout. Justify the content to align the site logo to the left and navigation links to the right. */
+    header, .nav_links{
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+    /* Step 12: Change the initial size of each card to 275px. (Although the instructions suggest modifying the "pricing" class as well, I did not see a need to do so.)  */
+    .card {
+        flex-basis: 275px;
+    }
+
+
+    /* Step 13: Stick the first header to the top of the screen.  */
+    body > header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+}
+
+/* The following specifications are for when the user prefers reduced motion.   */
+
+@media (prefers-reduced-motion: reduce) {
+    /* Step 14: Remove the animation of the logo if prefers-reduced-motion is selected in the accessibility preferences.   */
+    #logo {
+        animation: none;
+    }
+}
+
+/* The following specifications are for when the page is printed in portrait mode.  */
+
+@media print and (orientation: portrait) {
+    /* Step 15: Change the font on the body to Arial with a backup value of Helvetica  */
+    /* Step 16: Remove the background image.   */
+    body {
+        font-family: Arial, Helvetica;
+        background-image: none;
+    }
+
+    /* Step 17: Adjust the width of nav to 100% and display links in a row with space around.  */
+    nav{
+        width:100%;
+    }
+
+    .nav_links {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    /* Step 18: Align cards under the pricing class along the bottom and unwrap the flex to allow three cards displaying on the same row. */
+    .pricing {
+        align-items: flex-end;
+        flex-wrap: nowrap;
+    }
+
+    /* Step 19: Apply a 2px solid #45ADDD border to the card elements and set their flex-basis to 325px for a consistent initial size.  */
+    .card {
+        border: 2px solid #45ADDD;
+        flex-basis: 325px;
+    }
+
+    /* Step 20: Hide both gallery title and gallery images on the print view.  */
+    .gallery, #gallery {
+        display: none;
+    }
+
+    /* Step 21: Add a thumbs-up symbol to the second list item in each card by using a pseudo-element. */
+    .card li:nth-child(2)::after {
+        content: "\1F44D";
+    }
+
+}
