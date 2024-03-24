@@ -30,7 +30,6 @@ header {
 }
 
 /* Step 4: Display nav-links class in flex with column direction.  */
-
 .nav_links {
     display: flex;
     flex-direction: column;
@@ -46,7 +45,6 @@ a:visited {
    - Border: 2px solid border using #45ADAD
    - Padding: 20px on the top and bottom
    - Border radius: 50px on the top left and right corners */
-
 .card > header {
     background: #288088;
     border: 2px solid #45ADAD;
@@ -63,7 +61,6 @@ a:visited {
 /* Step 7&8: Specify an initial size of 450px for each card using flex-basis property.
 
 Wrap cards under the pricing class and center them both horizontally and vertically. */
-
 .card {
     flex-basis: 450px;
 }
@@ -79,7 +76,6 @@ Wrap cards under the pricing class and center them both horizontally and vertica
    - Border: 10px solid border with a color of #50C7C7
    - Margin: 10px on all four sides
    - Width: 300px */
-
 .gallery img {
     border: 10px solid #50C7C7;
     margin: 10px;
